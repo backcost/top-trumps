@@ -1,7 +1,17 @@
+:root {
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Roboto Mono', monospace;
+  font-family: "Roboto Mono", monospace;
   min-height: 854px;
-  background-image: url('https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-07-super-trunfo-bg.png');
+  background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-07-super-trunfo-bg.png");
   background-color: #000000;
   background-size: cover;
   background-position: center top;
@@ -12,15 +22,19 @@ body {
 .container {
   text-align: center;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.page-title {
-  color: #ffffff;
-  margin: 5px 0;
+.container__logo {
+  max-height: 90px;
+  width: max-content;
 }
 
-button, .button-jogar {
-  padding: .8rem 1.5rem;
+button,
+.button-jogar {
+  padding: 0.8rem 1.5rem;
   margin: 1rem 0;
   border-radius: 5px;
   border: none;
@@ -31,7 +45,8 @@ h2 {
   color: white;
 }
 
-#carta-jogador, #carta-maquina {
+#carta-jogador,
+#carta-maquina {
   width: 360px;
   height: 500px;
   overflow: auto;
