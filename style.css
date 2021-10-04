@@ -66,18 +66,20 @@ body {
   width: 100%;
 }
 
-.wrapper__card {
+.player__card, .engine__card {
   display: flex;
   flex-direction: column;
+  padding: 50px;
+  max-height: 700px;
 }
 
 .card__image {
   align-items: center;
   background-repeat: no-repeat;
   border-radius: 8px;
-  height: 50vh;
+  height: auto;
+  width: 30vw;
   display: flex;
-  margin: 0;
   overflow: auto;
   position: relative;
   box-shadow: 0px 0px 50px 10px rgb(184 129 62);

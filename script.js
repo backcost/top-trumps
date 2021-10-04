@@ -15,18 +15,18 @@ const showsPlayerCard = () => {
   let textOptions = ""
   for (let attribute in playerCard.attributes) {
     textOptions += `
-    <input type='radio' name='attribute' value='${attribute}'>${attribute} ${playerCard.attributes[attribute]}<br>`
+    <input type='radio' name='attribute' value='${attribute}'>${attribute}: ${playerCard.attributes[attribute]}<br>`
   }
 
   document.getElementById("container__form").innerHTML = 
   `<form id="form" class="container__form">
     <h2 class="form__tittle">Choose attribute</h2>
     <div class="form__wrapper">
-      <div id="player__card" class="wrapper__card">
+      <div id="player__card" class="player__card">
         <img class="card__image" alt="${playerCard.name} Image" src="${playerCard.image}"/>
         <div id="playerattributes" class="card__attributes">${textOptions}</div>
-      /div>
-      <div id="engine__card" class="wrapper__card"></div>
+      </div>
+      <div id="engine__card" class="engine__card"></div>
       </div>
     </div>
     </form>
@@ -42,7 +42,7 @@ const showsEngineCard = () => {
   let textOptions = ""
   for (let attribute in engineCard.attributes) {
     textOptions += `
-    <input type='text' name='attribute' value='${attribute}'>${attribute} ${engineCard.attributes[attribute]}<br>`
+    <input type='text' name='attribute' value='${attribute}'>${attribute}: ${engineCard.attributes[attribute]}<br>`
   }
 
   document.getElementById("engine__card").innerHTML = 
@@ -89,30 +89,30 @@ let cards = [
   { name: "Blue-Eyes White Dragon",
     image: "https://static.wikia.nocookie.net/yugioh/images/e/e5/BlueEyesWhiteDragon-LDS2-EN-UR-1E.png",
     attributes: {
-      atack: 3000,
-      defense: 2500,
-      level: 8} 
+      Atack: 3000,
+      Defense: 2500,
+      Level: 8} 
   }, 
   { name: "Baby Dragon",
     image: "https://static.wikia.nocookie.net/yugioh/images/c/c4/BabyDragon-SS02-EN-C-1E.png",
     attributes: {
-      atack: 1200,
-      defense: 700,
-      level: 3} 
+      Atack: 1200,
+      Defense: 700,
+      Level: 3} 
   },  
   { name: "Red-Eyes Black Dragon",
     image: "https://static.wikia.nocookie.net/yugioh/images/7/79/RedEyesBlackDragon-LDS1-EN-UR-1E-Blue.png",
     attributes: {
-      atack: 2400,
-      defense: 2000,
-      level: 7} 
+      Atack: 2400,
+      Defense: 2000,
+      Level: 7} 
   },  
   { name: "Dark Magician",
     image: "https://static.wikia.nocookie.net/yugioh/images/b/b6/DarkMagician-DUPO-EN-UR-LE.png",
     attributes: {
-      atack: 2500,
-      defense: 2100,
-      level: 7} 
+      Atack: 2500,
+      Defense: 2100,
+      Level: 7} 
   }
 ]
 
