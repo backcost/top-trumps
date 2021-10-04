@@ -1,133 +1,122 @@
-let cartaPaulo = {
-  name: "Shiryu de dragão",
-  image: "http://pm1.narvii.com/6399/96fdb9d4fe6a9e72b9bc60ad418e3c43795e53b4_00.jpg",
-  atributes: {
-    ataque: 5,
-    defesa: 9,
-    magia: 10
-  }
-};
+const drawCards = () => {
+  let engineCardNumber = parseInt(Math.random() * 3)
+  engineCard = cards[engineCardNumber]
 
-let cartaRafa = {
-  name: "Bulbasauro",
-  image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
-  atributes: {
-    ataque: 7,
-    defesa: 8,
-    magia: 6
-  }
-};
+  cards.splice(engineCardNumber, 1)
+  let playerCardNumber = parseInt(Math.random() * 2)
+  playerCard = cards[playerCardNumber]
 
-let cartaGui = {
-  name: "Darth Vader",
-  image:
-    "https://images-na.ssl-images-amazon.com/images/I/41i-0NH0q9L._SX328_BO1,204,203,200_.jpg",
-  atributes: {
-    ataque: 9,
-    defesa: 8,
-    magia: 2
-  }
-};
-
-let cartaMaquina;
-let cartaJogador;
-let cartas = [cartaPaulo, cartaRafa, cartaGui];
-// 0          1           2
-
-function sortearCarta() {
-  let numeroCartaMaquina = parseInt(Math.random() * 3);
-  cartaMaquina = cartas[numeroCartaMaquina];
-
-  let numeroCartaJogador = parseInt(Math.random() * 3);
-  while (numeroCartaJogador == numeroCartaMaquina) {
-    numeroCartaJogador = parseInt(Math.random() * 3);
-  }
-  cartaJogador = cartas[numeroCartaJogador];
-  console.log(cartaJogador);
-
-  document.getElementById("btnSortear").disabled = true;
-  document.getElementById("btnJogar").disabled = false;
-  exibirCartaJogador();
+  document.getElementById("drawCardsButton").disabled = true
+  document.getElementById("playButton").disabled = false
+  showPlayerCard()
 }
 
-function obtematributeselecionado() {
-  let radioAtributo = document.getElementsByName("atributo");
+const obtematributeselecionado = () => {
+  let radioAtributo = document.getElementsByName("atributo")
   for (let i = 0; i < radioAtributo.length; i++) {
     if (radioAtributo[i].checked) {
-      return radioAtributo[i].value;
+      return radioAtributo[i].value
     }
   }
 }
 
-function jogar() {
+const jogar = () => {
   console.log("chamou");
-  let atributeselecionado = obtematributeselecionado();
-  let divResultado = document.getElementById("resultado");
+  let atributeselecionado = obtematributeselecionado()
+  let divResultado = document.getElementById("resultado")
 
   if (
-    cartaJogador.atributes[atributeselecionado] >
-    cartaMaquina.atributes[atributeselecionado]
+    playerCard.atributes[atributeselecionado] >
+    engineCard.atributes[atributeselecionado]
   ) {
-    htmlResultado = "<p class='resultado-final'>Venceu</p>";
+    htmlResultado = "<p class='resultado-final'>Venceu</p>"
   } else if (
-    cartaJogador.atributes[atributeselecionado] <
-    cartaMaquina.atributes[atributeselecionado]
+    playerCard.atributes[atributeselecionado] <
+    engineCard.atributes[atributeselecionado]
   ) {
-    htmlResultado = "<p class='resultado-final'>Perdeu</p>";
+    htmlResultado = "<p class='resultado-final'>Perdeu</p>"
   } else {
-    htmlResultado = "<p class='resultado-final'>Empatou</p>";
+    htmlResultado = "<p class='resultado-final'>Empatou</p>"
   }
-  divResultado.innerHTML = htmlResultado;
+  divResultado.innerHTML = htmlResultado
 
-  document.getElementById("btnJogar").disabled = true;
-  exibirCartaMaquina();
+  document.getElementById("btnJogar").disabled = true
+  exibirengineCard()
 }
 
-function exibirCartaJogador() {
-  let divCartaJogador = document.getElementById("carta-jogador");
-  divCartaJogador.style.backgroundImage = `url(${cartaJogador.image})`;
+const  showPlayerCard = () => {
+  let divplayerCard = document.getElementById("carta-jogador")
+  divplayerCard.style.backgroundImage = `url(${playerCard.image})`
   let moldura =
-    '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">';
-  let tagHTML = "<div id='opcoes' class='carta-status'>";
+    '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">'
+  let tagHTML = "<div id='opcoes' class='carta-status'>"
 
-  let opcoesTexto = "";
-  for (let atributo in cartaJogador.atributes) {
+  let opcoesTexto = ""
+  for (let atributo in playerCard.atributes) {
     opcoesTexto +=
       "<input type='radio' name='atributo' value='" +
       atributo +
       "'>" +
       atributo +
       " " +
-      cartaJogador.atributes[atributo] +
-      "<br>";
+      playerCard.atributes[atributo] +
+      "<br>"
   }
-  let name = `<p class="carta-subtitle">${cartaJogador.name}</p>`;
+  let name = `<p class="carta-subtitle">${playerCard.name}</p>`
 
-  divCartaJogador.innerHTML = moldura + name + tagHTML + opcoesTexto + "</div>";
+  divplayerCard.innerHTML = moldura + name + tagHTML + opcoesTexto + "</div>"
 }
 
-function exibirCartaMaquina() {
-  let divCartaMaquina = document.getElementById("carta-maquina");
-  divCartaMaquina.style.backgroundImage = `url(${cartaMaquina.image})`;
+const  exibirengineCard = () => {
+  let divengineCard = document.getElementById("carta-maquina")
+  divengineCard.style.backgroundImage = `url(${engineCard.image})`
   let moldura =
-    '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">';
-  let tagHTML = "<div id='opcoes' class='carta-status'>";
+    '<img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent.png" style=" width: inherit; height: inherit; position: absolute;">'
+  let tagHTML = "<div id='opcoes' class='carta-status'>"
 
-  let opcoesTexto = "";
-  for (let atributo in cartaMaquina.atributes) {
+  let opcoesTexto = ""
+  for (let atributo in engineCard.atributes) {
     opcoesTexto +=
       "<p type='text' name='atributo' value='" +
       atributo +
       "'>" +
       atributo +
       " " +
-      cartaMaquina.atributes[atributo] +
-      "</p>";
+      engineCard.atributes[atributo] +
+      "</p>"
   }
-  let name = `<p class="carta-subtitle">${cartaMaquina.name}</p>`;
+  let name = `<p class="carta-subtitle">${engineCard.name}</p>`
 
-  divCartaMaquina.innerHTML = moldura + name + tagHTML + opcoesTexto + "</div>";
+  divengineCard.innerHTML = moldura + name + tagHTML + opcoesTexto + "</div>"
 }
+
+
+let engineCard
+let playerCard
+let cards = [
+  { name: "Blue-Eyes White Dragon",
+    image: "https://www.duelshop.com.br/11007/blue-eyes-white-dragon-dpkb-en001-super-rare.jpg",
+    atributes: {
+      atack: 3000,
+      defense: 2500,
+      level: 8} 
+  }, 
+  { name: "Baby Dragon",
+    image: "https://www.duelshop.com.br/15480-large_default/baby-dragon-ss02-enb06-common.jpg",
+    atributes: {
+      atack: 1200,
+      defense: 700,
+      level: 3} 
+  },  
+  { name: "Red-Eyes Black Dragon",
+    image: "https://www.duelshop.com.br/2309-large_default/red-eyes-b-dragon-mil1-en027-common.jpg",
+    atributes: {
+      atack: 2400,
+      defense: 2000,
+      level: 7} 
+  }
+]
+
 
 
 /*   Verificar o que acontece caso você não selecione nenhum dos 
@@ -136,12 +125,12 @@ atributes e como solucionar
 Adicionar a image do personagem assim que você selecionar a carta 
 dele 
 
-Criar de fato um baralho, com várias outras cartas
+Criar de fato um baralho, com várias outras cards
 
 Desenvolver um sistema em que a cada carta que um jogador ganhe, 
 ele fique com a carta do oponente e vice versa
 
-Transformar as funções exibirCartaMaquina() e exibirCartaJogador() 
+Transformar as funções exibirengineCard() e showPlayerCard() 
 em apenas uma, chamada exibirCarta(), utilizando para isso a 
 passagem de parâmetros
 
