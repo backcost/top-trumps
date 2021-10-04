@@ -9,44 +9,17 @@
 </head>
 <body>
     <div class="container">
-        <img
-        src="https://i1.wp.com/toptrumps.com/wp-content/uploads/2020/11/TopTrumps_WorldStrapline_402x154_White.png?resize=768%2C295&ssl=1"
-        class="container__logo"
-        alt="Top Trumps Logo"
-        />
-        <button onclick="drawCards()" id="drawCardsButton">Draw your card</button>
-        <form id="form">
-        <h2>Choose atribute</h2>
-        <div class="wrapper">
-            <div>
-            <div id="carta-jogador">
-                <img
-                src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
-                style="width: inherit; height: inherit; position: absolute"
-                />
-                <h3></h3>
-            </div>
-            </div>
-            <div>
-            <div id="carta-maquina" class="carta">
-                <img
-                src="https://www.alura.com.br/assets/img/imersoes/dev-2021/card-super-trunfo-transparent-ajustado.png"
-                style="width: inherit; height: inherit; position: absolute"
-                />
-            </div>
-            </div>
-        </div>
-        <button
-            class="button-jogar"
-            type="button"
-            id="playButton"
-            onclick="jogar()"
-            disabled="false"
-        >
-            It's time to DUEL!
+        <img class="container__logo" alt="Top Trumps Logo"
+        src="https://i1.wp.com/toptrumps.com/wp-content/uploads/2020/11/TopTrumps_WorldStrapline_402x154_White.png?resize=768%2C295&ssl=1"/>
+
+        <button onclick="drawCards()" id="drawCardsButton" class="container__button">
+            Draw your card
         </button>
-        <div id="resultado"></div>
-        </form>
+
+        <div id="container__form" class="container__form">
+            <img class="container__image" alt="Top Trumps Logo"
+            src="http://3.bp.blogspot.com/-bvOZGVPCk5Q/Vd4vCVsddhI/AAAAAAAABLU/KsBlM09FGzI/s1600/3025728-exodia_by_natsuking-d59igdf.jpg"/>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
