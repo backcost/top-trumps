@@ -30,16 +30,22 @@ body {
 
 .container__logo {
   max-height: 90px;
+  margin-bottom: 40px;
 }
 
 .container__button {
-  border-radius: 5px;
-  font-size: 16px;
-  margin: 7px 0;
-  padding: 4px 8px;
+  border-radius: 10px;
+  font-weight: bolder;
+  font-size: 2vw;
+  margin: 0 0 7px 0;
+  padding: 5px 10px;
   cursor: pointer;
-  width: fit-content;
   align-self: center;
+}
+
+.container__button:hover {
+  background-color: black;
+  color: rgb(184 129 62);
 }
 
 .container__image {
@@ -50,6 +56,9 @@ body {
   margin-top: 80px;
   box-shadow: 0px 110px 500px 130px rgb(184 129 62);
   align-self: center;
+  transition-duration: 0.5s;
+  transition-timing-function: linear;
+  transition-delay: 0.4s;
 }
 
 .container__form {
@@ -57,6 +66,7 @@ body {
   flex-direction: column;
   text-align: center;
   width: 90vw;
+  align-items: center;
 }
 
 .form__tittle {
@@ -96,12 +106,16 @@ body {
 
 .container__result {
   color: white;
-  font-size: 25px;
+  font-size: 3vw;
   text-transform: uppercase;
   font-weight: bolder;
-  padding: 10px;
+  padding: 8px;
   background-color: rgb(184 129 75);
-  box-shadow: 0px 0px 50px 15px rgb(184 129 62);
+  align-self: center;
+  width: fit-content;
+  border: 2px solid black;
+  border-radius: 14px;
+  margin: 10px;
 }
 
 @media only screen and (max-width: 800px) {

@@ -6,7 +6,7 @@ const drawCards = () => {
   let playerCardNumber = parseInt(Math.random() * (cards.length - 1));
   playerCard = cards[playerCardNumber];
 
-  document.getElementById("drawCardsButton").disabled = true;
+  document.getElementById("drawCardsButton").remove(self);
   showsPlayerCard();
 };
 
@@ -31,12 +31,10 @@ const showsPlayerCard = () => {
       <div id="engine__card" class=""></div>
     </div>
   </form>
-
+  <h2 id='errorMsg' class=''></h2>
   <button class="container__button" type="button" id="playButton" onclick="play()">
     It's time to DUEL!
-  </button>
-  <div id="repeat"></div>
-  </div>`;
+  </button>`;
 };
 
 const showsEngineCard = () => {
@@ -65,7 +63,8 @@ const play = () => {
     }
   }
   if (selectedAttributes === undefined) {
-    result = "Choose an attribute";
+    document.getElementById("errorMsg").innerHTML = 
+    `<h2 id='result' class='container__result'>Choose an attribute</h2>`;
   } else {
     if (
       playerCard.attributes[selectedAttributes] >
@@ -80,18 +79,16 @@ const play = () => {
     } else {
       result = "Draw";
     }
-
-    document.getElementById("playButton").disabled = true;
     showsEngineCard();
-    document.getElementById("repeat").innerHTML = 
-    `<button class="container__button" type="button" onclick="window.location.reload()">
-    Play again?
-    </button>`;
+    document.getElementById("playButton").remove(self);
+    document.getElementById("errorMsg").remove(self);
     document.getElementById("form__tittle").innerHTML = "";
+    document.getElementById("container__form").innerHTML += 
+    `<h2 id='result' class='container__result'>${result}</h2>
+    <button class="container__button" type="button" onclick="window.location.reload()">
+    Play again?
+    </button>`
   }
-  document.getElementById("playButton").innerHTML = 
-  `<h2 class='container__result'>${result}</h2>
-  </button>`;
 };
 
 let engineCard;
