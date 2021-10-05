@@ -26,59 +26,48 @@ const showsPlayerCard = () => {
         <img class="card__image" alt="${playerCard.name} Image" src="${playerCard.image}"/>
         <div id="playerattributes" class="card__attributes">${textOptions}</div>
       </div>
-      <div id="engine__card" class="engine__card"></div>
-      </div>
+      <div id="engine__card" class=""></div>
     </div>
-    </form>
+  </form>
 
   <button class="container__button" type="button" id="playButton" onclick="play()">
     It's time to DUEL!
   </button>
-
-  <div id="result"></div>`
+  </div>`
 }
 
 const showsEngineCard = () => {
   let textOptions = ""
   for (let attribute in engineCard.attributes) {
     textOptions += `
-    <input type='text' name='attribute' value='${attribute}'>${attribute}: ${engineCard.attributes[attribute]}<br>`
+    <input type='hidden'>${attribute}: ${engineCard.attributes[attribute]}<br>`
   }
 
+  document.getElementById("engine__card").classList.toggle('engine__card')
   document.getElementById("engine__card").innerHTML = 
   `<img class="card__image" alt="${engineCard.name} Image" src="${engineCard.image}"/>
-  <div id="engineattributes" class="card__attributes">${textOptions}</div>`
-}
-
-const getAttributes = () => {
-  let radioattribute = document.getElementsByName("attribute")
-  for (let i = 0; i < radioattribute.length; i++) {
-    if (radioattribute[i].checked) {
-      return radioattribute[i].value
-    }
-  }
+  <div class="card__attributes">${textOptions}</div>`
 }
 
 const play = () => {
-  let selectedAttributes = getAttributes()
-  let divResult = document.getElementById("result")
-
-  if (
-    playerCard.attributes[selectedAttributes] >
-    engineCard.attributes[selectedAttributes]
-  ) {
-    htmlResult = "<p class='container__result'>You won!</p>"
-  } else if (
-    playerCard.attributes[selectedAttributes] <
-    engineCard.attributes[selectedAttributes]
-  ) {
-    htmlResult = "<p class='container__result'>You Lose!</p>"
-  } else {
-    htmlResult = "<p class='container__result'>Draw</p>"
+  let selectedAttributes, result
+  let radioAttribute = document.getElementsByName("attribute")
+  for (let i = 0; i < radioAttribute.length; i++) {
+    if (radioAttribute[i].checked) {
+      selectedAttributes = radioAttribute[i].value
+      break
+    }
   }
-  divResult.innerHTML = htmlResult
+  if (playerCard.attributes[selectedAttributes] > engineCard.attributes[selectedAttributes]) {
+    result = "You win!"
+  } else if (playerCard.attributes[selectedAttributes] < engineCard.attributes[selectedAttributes]) {
+    result = "Wasted!"
+  } else {
+    result = "Draw"
+  }
 
   document.getElementById("playButton").disabled = true
+  document.getElementById("playButton").innerHTML = `<h2 class='container__result'>${result}</h2>`
   showsEngineCard()
 }
 
@@ -87,32 +76,39 @@ let engineCard
 let playerCard
 let cards = [
   { name: "Blue-Eyes White Dragon",
-    image: "https://static.wikia.nocookie.net/yugioh/images/e/e5/BlueEyesWhiteDragon-LDS2-EN-UR-1E.png",
+    image: "imgs/BlueEyesWhiteDragon-LDS2-EN-UR-1E.png",
     attributes: {
       Atack: 3000,
       Defense: 2500,
       Level: 8} 
   }, 
   { name: "Baby Dragon",
-    image: "https://static.wikia.nocookie.net/yugioh/images/c/c4/BabyDragon-SS02-EN-C-1E.png",
+    image: "imgs/BabyDragon-SS02-EN-C-1E.png",
     attributes: {
       Atack: 1200,
       Defense: 700,
       Level: 3} 
   },  
   { name: "Red-Eyes Black Dragon",
-    image: "https://static.wikia.nocookie.net/yugioh/images/7/79/RedEyesBlackDragon-LDS1-EN-UR-1E-Blue.png",
+    image: "imgs/RedEyesBlackDragon-LDS1-EN-UR-1E-Blue.png",
     attributes: {
       Atack: 2400,
       Defense: 2000,
       Level: 7} 
   },  
   { name: "Dark Magician",
-    image: "https://static.wikia.nocookie.net/yugioh/images/b/b6/DarkMagician-DUPO-EN-UR-LE.png",
+    image: "imgs/DarkMagician-DUPO-EN-UR-LE.png",
     attributes: {
       Atack: 2500,
       Defense: 2100,
       Level: 7} 
+  },  
+  { name: "Summoned Skull",
+    image: "imgs/SummonedSkull-MIL1-EN-C-1E.png",
+    attributes: {
+      Atack: 2500,
+      Defense: 1200,
+      Level: 6} 
   }
 ]
 
@@ -120,9 +116,6 @@ let cards = [
 
 /*   Verificar o que acontece caso você não selecione nenhum dos 
 attributes e como solucionar
-
-Adicionar a image do personagem assim que você selecionar a carta 
-dele 
 
 Criar de fato um baralho, com várias outras cards
 
@@ -132,6 +125,4 @@ ele fique com a carta do oponente e vice versa
 Transformar as funções showsEngineCard() e showsPlayerCard() 
 em apenas uma, chamada exibirCarta(), utilizando para isso a 
 passagem de parâmetros
-
-Utilizar seus personagens e jogos preferidos nesse projeto
 */
