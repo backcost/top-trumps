@@ -31,6 +31,7 @@ body {
 .container__logo {
   max-height: 90px;
   margin-bottom: 20px;
+
 }
 
 .container__button {
@@ -58,9 +59,13 @@ body {
   margin-top: 80px;
   box-shadow: 0px 110px 500px 130px rgb(184 129 62);
   align-self: center;
-  transition-duration: 0.5s;
+}
+
+.container__image:hover {
+  border-color: white;
+  box-shadow: 0px 110px 100px 60px white;
+  transition-duration: 1s;
   transition-timing-function: linear;
-  transition-delay: 0.4s;
 }
 
 .container__form {
@@ -109,12 +114,13 @@ body {
   font-size: 3vw;
   font-weight: bolder;
   padding: 4px;
-  background-color: rgb(184 129 75);
   align-self: center;
   width: fit-content;
-  border: 2px dotted white;
+  border: 2px dotted rgb(184 129 62);
+  box-shadow: 0px 0px 12px 5px rgb(184 129 62);
   border-radius: 14px;
   margin: 10px;
+  cursor: default;
 }
 
 @media only screen and (max-width: 800px) {
