@@ -70,14 +70,14 @@ const play = () => {
       playerCard.attributes[selectedAttributes] >
       engineCard.attributes[selectedAttributes]
     ) {
-      result = "You win!";
+      result = "YOU WIN!";
     } else if (
       playerCard.attributes[selectedAttributes] <
       engineCard.attributes[selectedAttributes]
     ) {
-      result = "You lose!";
+      result = "YOU LOSE!";
     } else {
-      result = "Draw";
+      result = "DRAW";
     }
     showsEngineCard();
     document.getElementById("playButton").remove(self);

@@ -107,9 +107,8 @@ body {
 .container__result {
   color: white;
   font-size: 3vw;
-  text-transform: uppercase;
   font-weight: bolder;
-  padding: 8px;
+  padding: 4px;
   background-color: rgb(184 129 75);
   align-self: center;
   width: fit-content;
