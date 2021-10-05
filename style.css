@@ -63,9 +63,9 @@ body {
 
 .container__image:hover {
   border-color: white;
-  box-shadow: 0px 110px 100px 60px white;
+  box-shadow: 0px 0px 100px 280px white;
   transition-duration: 1s;
-  transition-timing-function: linear;
+  transition-timing-function: ease-out;
   cursor: pointer;
 }
 
