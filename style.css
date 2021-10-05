@@ -69,7 +69,10 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .player__card, .engine__card {
@@ -88,8 +91,11 @@ body {
 }
 
 .card__attributes {
+  display: flex;
+  flex-direction: column;
   margin-top: 40px;
   color: white;
+  align-items: center;
 }
 
 .container__result {

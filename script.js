@@ -11,10 +11,13 @@ const drawCards = () => {
 }
 
 const showsPlayerCard = () => {
-  let textOptions = ""
+  let textOptions = "<form></form>"
   for (let attribute in playerCard.attributes) {
     textOptions += `
-    <input type='radio' name='attribute' value='${attribute}'>${attribute}: ${playerCard.attributes[attribute]}<br>`
+    <form>
+    <input type='radio' name='attribute' value='${attribute}'>
+    <label>${attribute}: ${playerCard.attributes[attribute]}</label>
+    </form>`
   }
 
   document.getElementById("container__form").innerHTML = 
