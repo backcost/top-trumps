@@ -16,7 +16,6 @@ body {
   background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-07-super-trunfo-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100vw;
 }
 
 .container {
@@ -25,6 +24,9 @@ body {
   flex-direction: column;
   height: 100%;
   width: 100%;
+  min-height: fit-content;
+  min-width: fit-content;
+  padding: 10px;
 }
 
 .container__logo {
@@ -33,26 +35,29 @@ body {
 
 .container__button {
   border-radius: 5px;
-  border: none;
-  font-size: 1rem;
-  margin: 1rem 0;
-  padding: 0.8rem 1.5rem;
+  font-size: 16px;
+  margin: 15px 0;
+  padding: 4px 8px;
   cursor: pointer;
+  width: fit-content;
+  align-self: center;
 }
 
 .container__image {
   height: 60vh;
+  width: fit-content;
   border-radius: 50%;
   border: 17px double rgb(184 129 62);
   margin-top: 80px;
   box-shadow: 0px 110px 500px 130px rgb(184 129 62);
+  align-self: center;
 }
 
 .container__form {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: fit-content;
+  width: 90vw;
 }
 
 .form__tittle {
@@ -63,7 +68,7 @@ body {
 .form__wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 }
 
@@ -95,4 +100,38 @@ body {
   padding: 1rem;
   border: 2px solid black;
   background-color: black;
+}
+
+/* @media only screen and (max-width: 1030px) {
+  .table__PGColumn, .table__PGTittle {
+    display: none;
+  }
+} */
+
+@media only screen and (max-width: 800px) {
+  .container__logo {
+    max-height: 40px;
+  }
+
+  .form__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .player__card, .engine__card {
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    align-items: center;
+  }
+  
+  .card__image {
+    height: 70%;
+    width: 45vw;
+  }
+  
+  .card__attributes {
+    margin: 30px 0 40px;
+  }
 }
