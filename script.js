@@ -22,11 +22,11 @@ const showsPlayerCard = () => {
   document.getElementById(
     "container__form"
   ).innerHTML = `<form id="form" class="container__form">
-    <h2 class="form__tittle">Choose attribute</h2>
+    <h2 class="form__tittle" id="form__tittle">Choose attribute</h2>
     <div class="form__wrapper">
       <div id="player__card" class="player__card">
-        <img class="card__image" alt="${playerCard.name} Image" src="${playerCard.image}"/>
         <div id="playerattributes" class="card__attributes">${textOptions}</div>
+        <img class="card__image" alt="${playerCard.name} Image" src="${playerCard.image}"/>
       </div>
       <div id="engine__card" class=""></div>
     </div>
@@ -35,6 +35,7 @@ const showsPlayerCard = () => {
   <button class="container__button" type="button" id="playButton" onclick="play()">
     It's time to DUEL!
   </button>
+  <div id="repeat"></div>
   </div>`;
 };
 
@@ -49,8 +50,9 @@ const showsEngineCard = () => {
   document.getElementById("engine__card").classList.toggle("engine__card");
   document.getElementById(
     "engine__card"
-  ).innerHTML = `<img class="card__image" alt="${engineCard.name} Image" src="${engineCard.image}"/>
-  <div class="card__attributes">${textOptions}</div>`;
+  ).innerHTML = `
+  <div class="card__attributes">${textOptions}</div>
+  <img class="card__image" alt="${engineCard.name} Image" src="${engineCard.image}"/>`;
 };
 
 const play = () => {
@@ -74,17 +76,22 @@ const play = () => {
       playerCard.attributes[selectedAttributes] <
       engineCard.attributes[selectedAttributes]
     ) {
-      result = "Wasted!";
+      result = "You lose!";
     } else {
       result = "Draw";
     }
 
     document.getElementById("playButton").disabled = true;
     showsEngineCard();
+    document.getElementById("repeat").innerHTML = 
+    `<button class="container__button" type="button" onclick="window.location.reload()">
+    Play again?
+    </button>`;
+    document.getElementById("form__tittle").innerHTML = "";
   }
-  document.getElementById(
-    "playButton"
-  ).innerHTML = `<h2 class='container__result'>${result}</h2>`;
+  document.getElementById("playButton").innerHTML = 
+  `<h2 class='container__result'>${result}</h2>
+  </button>`;
 };
 
 let engineCard;
