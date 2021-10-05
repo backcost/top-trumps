@@ -66,6 +66,7 @@ body {
   box-shadow: 0px 110px 100px 60px white;
   transition-duration: 1s;
   transition-timing-function: linear;
+  cursor: pointer;
 }
 
 .container__form {
