@@ -8,7 +8,6 @@ const drawCards = () => {
 
   document.getElementById("drawCardsButton").disabled = true
   showsPlayerCard()
-
 }
 
 const showsPlayerCard = () => {
@@ -58,17 +57,21 @@ const play = () => {
       break
     }
   }
-  if (playerCard.attributes[selectedAttributes] > engineCard.attributes[selectedAttributes]) {
-    result = "You win!"
-  } else if (playerCard.attributes[selectedAttributes] < engineCard.attributes[selectedAttributes]) {
-    result = "Wasted!"
+  if (selectedAttributes === undefined) {
+    result = "Choose an attribute"
   } else {
-    result = "Draw"
+    if (playerCard.attributes[selectedAttributes] > engineCard.attributes[selectedAttributes]) {
+      result = "You win!"
+    } else if (playerCard.attributes[selectedAttributes] < engineCard.attributes[selectedAttributes]) {
+      result = "Wasted!"
+    } else {
+      result = "Draw"
+    }
+  
+    document.getElementById("playButton").disabled = true
+    showsEngineCard()
   }
-
-  document.getElementById("playButton").disabled = true
   document.getElementById("playButton").innerHTML = `<h2 class='container__result'>${result}</h2>`
-  showsEngineCard()
 }
 
 
@@ -318,13 +321,7 @@ let cards = [
 ]
 
 
-/*   Verificar o que acontece caso você não selecione nenhum dos 
-attributes e como solucionar
-
+/*   
 Desenvolver um sistema em que a cada carta que um jogador ganhe, 
 ele fique com a carta do oponente e vice versa
-
-Transformar as funções showsEngineCard() e showsPlayerCard() 
-em apenas uma, chamada exibirCarta(), utilizando para isso a 
-passagem de parâmetros
 */
