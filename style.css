@@ -87,7 +87,7 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
 }
 
 .player__card,
@@ -110,6 +110,15 @@ body {
   color: white;
 }
 
+.card__radio {
+  margin: 0 !important;
+}
+
+.card__label {
+  font-weight: normal;
+  margin: 0;
+}
+
 .container__result {
   color: white;
   font-size: 3vw;
@@ -124,7 +133,16 @@ body {
   cursor: default;
 }
 
-@media only screen and (max-width: 800px) {
+.form__deck {
+  color: white;
+  margin: 50px 0 0;
+}
+
+.item {
+  width: 40vh;
+}
+
+@media only screen and (max-width: 850px) {
   .container__logo {
     max-height: 40px;
   }

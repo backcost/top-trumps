@@ -5,8 +5,11 @@ const drawCards = () => {
   cards.splice(engineCardNumber, 1);
   let playerCardNumber = parseInt(Math.random() * (cards.length - 1));
   playerCard = cards[playerCardNumber];
+  cards.splice(playerCardNumber, 1);
 
-  document.getElementById("drawCardsButton").remove(self);
+  if (document.getElementById("drawCardsButton")) {
+    document.getElementById("drawCardsButton").remove(self);
+  }
   showsPlayerCard();
 };
 
@@ -14,8 +17,8 @@ const showsPlayerCard = () => {
   let textOptions = "";
   for (let attribute in playerCard.attributes) {
     textOptions += `
-      <input type='radio' name='attribute' value='${attribute}'>
-      <label>${attribute}: ${playerCard.attributes[attribute]}</label>
+      <input class="card__radio" type='radio' name='attribute' value='${attribute}'>
+      <label class="card__label">${attribute}: ${playerCard.attributes[attribute]}</label>
       </br>`;
   }
 
@@ -41,7 +44,7 @@ const showsEngineCard = () => {
   let textOptions = "";
   for (let attribute in engineCard.attributes) {
     textOptions += `
-    <input type='hidden'>${attribute}: ${engineCard.attributes[attribute]}
+    <input class="card__label" type='hidden'>${attribute}: ${engineCard.attributes[attribute]}
     </br>`;
   }
 
@@ -62,6 +65,7 @@ const play = () => {
       break;
     }
   }
+
   if (selectedAttributes === undefined) {
     document.getElementById("errorMsg").innerHTML = 
     `<h2 id='result' class='container__result'>Choose an attribute</h2>`;
@@ -70,6 +74,8 @@ const play = () => {
       playerCard.attributes[selectedAttributes] >
       engineCard.attributes[selectedAttributes]
     ) {
+      playerDeck.push(playerCard)
+      playerDeck.push(engineCard)
       result = "YOU WIN!";
     } else if (
       playerCard.attributes[selectedAttributes] <
@@ -78,19 +84,61 @@ const play = () => {
       result = "YOU LOSE!";
     } else {
       result = "DRAW";
+      cards.push(playerCard)
+      cards.push(engineCard)
     }
     showsEngineCard();
     document.getElementById("playButton").remove(self);
     document.getElementById("errorMsg").remove(self);
     document.getElementById("form__tittle").innerHTML = "";
     document.getElementById("container__form").innerHTML += 
-    `<h2 id='result' class='container__result'>${result}</h2>
-    <button class="container__button" type="button" onclick="window.location.reload()">
-    Play again?
-    </button>`
+    `<h2 id='result' class='container__result'>${result}</h2>`
+    if (cards.length < 2) {
+      document.getElementById("container__form").innerHTML += 
+      `<h2 class='form__tittle'>That's all folks!</h2>`
+    } else {
+      document.getElementById("container__form").innerHTML += 
+      `<button class="container__button" type="button" onclick="drawCards()">
+      Play again?
+      </button>`
+    }
+    showsCarousel();
   }
 };
 
+const showsCarousel = () => {
+  let carouselImgs = `
+  <div class="item active">
+    <img src="${playerDeck[0].image}" alt="${playerDeck[0].name} Image">
+  </div>`;
+
+  for (let i = 1; i < playerDeck.length; i++) {
+    carouselImgs += `
+    <div class="item">
+    <img src="${playerDeck[i].image}" alt="${playerDeck[i].name} Image">
+    </div>`;
+  }
+  document.getElementById("container__form").innerHTML +=
+  `<h2 class="form__deck">Your Deck:</h2>
+  <div class="container">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        ${carouselImgs}
+      </div>
+
+      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+</div>`
+}
+
+let playerDeck = []
 let engineCard;
 let playerCard;
 let cards = [
@@ -395,8 +443,3 @@ let cards = [
     },
   },
 ];
-
-/*   
-Desenvolver um sistema em que a cada carta que um jogador ganhe, 
-ele fique com a carta do oponente e vice versa
-*/
