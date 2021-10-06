@@ -35,7 +35,7 @@ const showsPlayerCard = () => {
     </div>
   </form>
   <h2 id='errorMsg' class=''></h2>
-  <button class="container__button" type="button" id="playButton" onclick="play()">
+  <button class="container__button" type="button" id="playButton" onclick="setTimeout(play, 600)">
     It's time to DUEL!
   </button>`;
 };
@@ -98,7 +98,7 @@ const play = () => {
       `<h2 class='form__tittle'>That's all folks!</h2>`
     } else {
       document.getElementById("container__form").innerHTML += 
-      `<button class="container__button" type="button" onclick="drawCards()">
+      `<button class="container__button" type="button" onclick="setTimeout(drawCards, 700)">
       Play again?
       </button>`
     }
