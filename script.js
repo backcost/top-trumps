@@ -97,8 +97,12 @@ const play = () => {
       document.getElementById("container__form").innerHTML += 
       `<h2 class='form__tittle'>That's all folks!</h2>`
     } else {
+      let elements = document.getElementsByClassName("card__radio")
+      while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+      }
       document.getElementById("container__form").innerHTML += 
-      `<button class="container__button" type="button" onclick="setTimeout(drawCards, 700)">
+      `<button class="container__button" type="button" onclick="setTimeout(drawCards, 400)">
       Play again?
       </button>`
     }
