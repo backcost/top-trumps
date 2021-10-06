@@ -102,7 +102,7 @@ const play = () => {
         elements[0].parentNode.removeChild(elements[0]);
       }
       document.getElementById("container__form").innerHTML += 
-      `<button class="container__button" type="button" onclick="setTimeout(drawCards, 400)">
+      `<button class="container__button" type="button" onclick="setTimeout(drawCards, 600)">
       Play again?
       </button>`
     }
@@ -124,7 +124,7 @@ const showsCarousel = () => {
   }
   document.getElementById("container__form").innerHTML +=
   `<h2 class="form__deck">Your Deck:</h2>
-  <div class="container">
+  <div class="carousel__container">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         ${carouselImgs}
