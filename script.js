@@ -1,17 +1,8 @@
-const drawCards = () => {
-  let engineCardNumber = parseInt(Math.random() * cards.length);
-  engineCard = cards[engineCardNumber];
-
-  cards.splice(engineCardNumber, 1);
-  let playerCardNumber = parseInt(Math.random() * (cards.length - 1));
-  playerCard = cards[playerCardNumber];
-  cards.splice(playerCardNumber, 1);
-
-  if (document.getElementById("drawCardsButton")) {
-    document.getElementById("drawCardsButton").remove(self);
-  }
-  showsPlayerCard();
-};
+const drawSingleCard = () => {
+  let cardNumber = parseInt(Math.random() * cards.length);
+  cards.splice(cardNumber, 1);
+  return cards[cardNumber];
+}
 
 const showsPlayerCard = () => {
   let textOptions = "";
@@ -21,10 +12,8 @@ const showsPlayerCard = () => {
       <label class="card__label">${attribute}: ${playerCard.attributes[attribute]}</label>
       </br>`;
   }
-
-  document.getElementById(
-    "container__form"
-  ).innerHTML = `<form id="form" class="container__form">
+  document.getElementById("container__form").innerHTML = 
+  `<form id="form" class="container__form">
     <h2 class="form__tittle" id="form__tittle">Choose attribute</h2>
     <div class="form__wrapper">
       <div id="player__card" class="player__card">
@@ -40,19 +29,26 @@ const showsPlayerCard = () => {
   </button>`;
 };
 
+const drawCards = () => {
+  engineCard = drawSingleCard();
+  playerCard = drawSingleCard();
+
+  if (document.getElementById("drawCardsButton")) {
+    document.getElementById("drawCardsButton").remove(self);
+  }
+  showsPlayerCard();
+}
+
 const showsEngineCard = () => {
   let textOptions = "";
   for (let attribute in engineCard.attributes) {
-    textOptions += `
-    <input class="card__label" type='hidden'>${attribute}: ${engineCard.attributes[attribute]}
+    textOptions += 
+    `<input class="card__label" type='hidden'>${attribute}: ${engineCard.attributes[attribute]}
     </br>`;
   }
-
   document.getElementById("engine__card").classList.toggle("engine__card");
-  document.getElementById(
-    "engine__card"
-  ).innerHTML = `
-  <div class="card__attributes">${textOptions}</div>
+  document.getElementById("engine__card").innerHTML = 
+  `<div class="card__attributes">${textOptions}</div>
   <img class="card__image" alt="${engineCard.name} Image" src="${engineCard.image}"/>`;
 };
 
@@ -65,7 +61,6 @@ const play = () => {
       break;
     }
   }
-
   if (selectedAttributes === undefined) {
     document.getElementById("errorMsg").innerHTML = 
     `<h2 id='result' class='container__result'>Choose an attribute</h2>`;
@@ -141,6 +136,7 @@ const showsCarousel = () => {
     </div>
 </div>`
 }
+
 
 let playerDeck = []
 let engineCard;
