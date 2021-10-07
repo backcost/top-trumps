@@ -1,7 +1,6 @@
 const drawSingleCard = () => {
   let cardNumber = parseInt(Math.random() * cards.length);
-  cards.splice(cardNumber, 1);
-  return cards[cardNumber];
+  return cards.splice(cardNumber, 1);
 }
 
 const showsPlayerCard = () => {
@@ -12,6 +11,7 @@ const showsPlayerCard = () => {
       <label class="card__label">${attribute}: ${playerCard.attributes[attribute]}</label>
       </br>`;
   }
+  
   document.getElementById("container__form").innerHTML = 
   `<form id="form" class="container__form">
     <h2 class="form__tittle" id="form__tittle">Choose attribute</h2>
@@ -30,12 +30,14 @@ const showsPlayerCard = () => {
 };
 
 const drawCards = () => {
-  engineCard = drawSingleCard();
-  playerCard = drawSingleCard();
+  engineCard = drawSingleCard()[0];
+  playerCard = drawSingleCard()[0];
+  
 
   if (document.getElementById("drawCardsButton")) {
     document.getElementById("drawCardsButton").remove(self);
   }
+  
   showsPlayerCard();
 }
 
@@ -105,6 +107,8 @@ const play = () => {
   }
 };
 
+// AJEITAR CAROUSEL
+// CORES NO CSS
 const showsCarousel = () => {
   let carouselImgs = `
   <div class="item active">
@@ -223,13 +227,13 @@ let cards = [
     },
   },
   {
-    name: "Curse of Dragon",
-    image: "imgs/CurseofDragon-YGLD-EN-C-1E.png",
-    /* https://static.wikia.nocookie.net/yugioh/images/c/c8/CurseofDragon-YGLD-EN-C-1E.png */
+    name: "Castle of Dark Illusions",
+    image: "imgs/CastleofDarkIllusions-MRD-NA-C-UE.png",
+    /* https://static.wikia.nocookie.net/yugioh/images/0/0d/CastleofDarkIllusions-MRD-NA-C-UE.png */
     attributes: {
-      Atack: 2000,
-      Defense: 1500,
-      Level: 5,
+      Atack: 920,
+      Defense: 1930,
+      Level: 4,
     },
   },
   {
