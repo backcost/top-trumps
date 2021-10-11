@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap");
 
-/* :root {
-} */
+:root {
+  --black: #000000;
+  --white: white;
+  --porsche: rgb(184 129 62);
+}
 
 * {
   box-sizing: border-box;
@@ -11,7 +14,7 @@
 }
 
 body {
-  background-color: #000000;
+  background-color: var(--black);
   background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-07-super-trunfo-bg.png");
   background-repeat: repeat;
   background-size: cover;
@@ -39,23 +42,23 @@ body {
 }
 
 .container__button:hover {
-  background-color: black;
-  color: rgb(184 129 62);
+  background-color: var(--black);
+  color: var(--porsche);
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
 
 .container__image {
   border-radius: 50%;
-  border: 17px double rgb(184 129 62);
-  box-shadow: 0 110px 500px 130px rgb(184 129 62);
+  border: 17px double var(--porsche);
+  box-shadow: 0 110px 500px 130px var(--porsche);
   height: 60vh;
   margin-top: 80px;
 }
 
 .container__image:hover {
-  border: 80px double whitesmoke;
-  box-shadow: 0 400px 4000px 400px white;
+  border: 80px double var(--white);
+  box-shadow: 0 400px 4000px 400px var(--white);
   cursor: pointer;
   transition-duration: 2.5s;
   transition-timing-function: ease-out;
@@ -69,7 +72,7 @@ body {
 }
 
 .form__tittle {
-  color: white;
+  color: var(--white);
   cursor: default;
   font-size: 19px;
   font-weight: bolder;
@@ -90,13 +93,13 @@ body {
 }
 
 .card__attributes {
-  color: white;
+  color: var(--white);
   margin: 5px 0 30px;
 }
 
 .card__image {
   border-radius: 5px;
-  box-shadow: 0 0 50px 10px rgb(184 129 62);
+  box-shadow: 0 0 50px 10px var(--porsche);
   height: 100%;
   width: 18vw;
 }
@@ -112,9 +115,9 @@ body {
 
 .container__result {
   border-radius: 14px;
-  border: 2px dotted rgb(184 129 62);
-  box-shadow: 0 0 12px 5px rgb(184 129 62);
-  color: white;
+  border: 2px dotted var(--porsche);
+  box-shadow: 0 0 12px 5px var(--porsche);
+  color: var(--white);
   cursor: default;
   font-size: 3vw;
   font-weight: bolder;
@@ -124,15 +127,36 @@ body {
 }
 
 .form__deck {
-  color: white;
+  color: var(--white);
   cursor: default;
   font-size: 20px;
   font-weight: bolder;
   margin: 45px 0 20px;
 }
 
-.carousel__container {
-  width: 30%;
+.container__carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.carousel__image {
+  border-radius: 5px;
+  width: 180px;
+  height: 270px;
+}
+
+.carousel__control--left {
+  margin-right: 10px;
+  margin-top: 135px;
+  color: white;
+
+}
+
+.carousel__control--right {
+  margin-left: 10px;
+  margin-top: 135px;
+  color: white;
 }
 
 @media only screen and (max-width: 900px) {
@@ -157,7 +181,7 @@ body {
     height: 2.2vw;
   }
 
-  .carousel__container {
+  .container__carousel {
     width: 38vw;
   }
 }

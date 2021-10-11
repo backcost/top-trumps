@@ -105,40 +105,35 @@ const play = () => {
     }
     showsCarousel();
   }
-};
+}
 
-// AJEITAR CAROUSEL
-// CORES NO CSS
 const showsCarousel = () => {
-  let carouselImgs = `
-  <div class="item active">
-    <img src="${playerDeck[0].image}" alt="${playerDeck[0].name} Image">
-  </div>`;
-
-  for (let i = 1; i < playerDeck.length; i++) {
-    carouselImgs += `
-    <div class="item">
-    <img src="${playerDeck[i].image}" alt="${playerDeck[i].name} Image">
-    </div>`;
-  }
   document.getElementById("container__form").innerHTML +=
   `<h2 class="form__deck">Your Deck:</h2>
-  <div class="carousel__container">
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        ${carouselImgs}
-      </div>
-
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-      </a>
+   <div class="container__carousel">
+    <div class="carousel__control--left" onclick="carouselControl(-1)">
+      <i class="fas fa-angle-left"></i>
     </div>
-</div>`
+    <div class="carousel__active" id="carousel__active">
+      <img class="carousel__image" src="${playerDeck[actual].image}" alt="${playerDeck[actual].name} Image">
+    </div>
+    <div class="carousel__control--right" onclick="carouselControl(1)">
+      <i class="fas fa-angle-right"></i>
+    </div>
+  </div>
+  <h3 class="form__tittle">${playerDeck.length} cards</h3>`
+}
+
+let actual = 0
+const carouselControl = (direction) => {
+  actual += direction
+  if (actual >= playerDeck.length) {
+    actual = 0;
+  } else if (actual < 0) {
+    actual = playerDeck.length - 1
+  }
+  document.getElementById("carousel__active").innerHTML = 
+  `<img class="carousel__image" src="${playerDeck[actual].image}" alt="${playerDeck[actual].name} Image">`
 }
 
 
