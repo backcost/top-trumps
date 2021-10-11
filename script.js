@@ -124,7 +124,7 @@ const showsCarousel = () => {
       <i class="fas fa-angle-right"></i>
     </div>
   </div>
-  <h3 class="form__tittle">${playerDeck.length} cards</h3>`
+  <h3 id="carousel__counter" class="carousel__counter">${actual+1}/${playerDeck.length}</h3>`
 }
 
 let actual = 0
@@ -137,6 +137,8 @@ const carouselControl = (direction) => {
   }
   document.getElementById("carousel__active").innerHTML = 
   `<img class="carousel__image" src="${playerDeck[actual].image}" alt="${playerDeck[actual].name} Image">`
+  document.getElementById("carousel__counter").innerHTML = 
+  `<h3 id="carousel__counter" class="carousel__counter">${actual+1}/${playerDeck.length}</h3>`
 }
 
 let playerDeck = []

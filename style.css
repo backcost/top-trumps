@@ -164,6 +164,12 @@ body {
   color: var(--grey);
 }
 
+.carousel__counter{
+  margin-top: 5px;
+  color: var(--white);
+  font-size: 13px;
+}
+
 @media only screen and (max-width: 900px) {
   .container__logo {
     max-height: 40px;
@@ -184,9 +190,5 @@ body {
 
   .card__attributes input {
     height: 2.2vw;
-  }
-
-  .container__carousel {
-    width: 38vw;
-  }
+  }  
 }
