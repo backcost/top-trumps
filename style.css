@@ -4,6 +4,7 @@
   --black: #000000;
   --white: white;
   --porsche: rgb(184 129 62);
+  --grey: grey;
 }
 
 * {
@@ -149,14 +150,18 @@ body {
 .carousel__control--left {
   margin-right: 10px;
   margin-top: 135px;
-  color: white;
-
+  color: var(--white);
 }
 
 .carousel__control--right {
   margin-left: 10px;
   margin-top: 135px;
-  color: white;
+  color: var(--white);
+}
+
+.carousel__control--left:hover, .carousel__control--right:hover {
+  cursor: pointer;
+  color: var(--grey);
 }
 
 @media only screen and (max-width: 900px) {

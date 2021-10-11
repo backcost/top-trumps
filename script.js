@@ -73,7 +73,10 @@ const play = () => {
     ) {
       playerDeck.push(playerCard)
       playerDeck.push(engineCard)
-      result = "YOU WIN!";
+      result = "YOU WIN!"
+      if (playerDeck.length === 2) {
+        setInterval("carouselControl(1)", 3500)
+      }
     } else if (
       playerCard.attributes[selectedAttributes] <
       engineCard.attributes[selectedAttributes]
@@ -135,7 +138,6 @@ const carouselControl = (direction) => {
   document.getElementById("carousel__active").innerHTML = 
   `<img class="carousel__image" src="${playerDeck[actual].image}" alt="${playerDeck[actual].name} Image">`
 }
-
 
 let playerDeck = []
 let engineCard;
