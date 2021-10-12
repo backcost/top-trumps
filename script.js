@@ -75,7 +75,7 @@ const play = () => {
       playerDeck.push(engineCard)
       result = "YOU WIN!"
       if (playerDeck.length === 2) {
-        setInterval("carouselControl(1)", 3500)
+        setInterval("carouselControl(1)", 4500)
       }
     } else if (
       playerCard.attributes[selectedAttributes] <

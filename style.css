@@ -2,9 +2,9 @@
 
 :root {
   --black: #000000;
-  --white: white;
-  --porsche: rgb(184 129 62);
   --grey: grey;
+  --porsche: rgb(184 129 62);
+  --white: white;
 }
 
 * {
@@ -136,6 +136,7 @@ body {
 }
 
 .container__carousel {
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -143,31 +144,29 @@ body {
 
 .carousel__image {
   border-radius: 5px;
-  width: 180px;
   height: 270px;
+  width: 180px;
 }
 
 .carousel__control--left {
-  margin-right: 10px;
-  margin-top: 135px;
   color: var(--white);
+  margin-right: 10px;
 }
 
 .carousel__control--right {
-  margin-left: 10px;
-  margin-top: 135px;
   color: var(--white);
+  margin-left: 10px;
 }
 
 .carousel__control--left:hover, .carousel__control--right:hover {
-  cursor: pointer;
   color: var(--grey);
+  cursor: pointer;
 }
 
 .carousel__counter{
-  margin-top: 5px;
   color: var(--white);
   font-size: 13px;
+  margin-top: 5px;
 }
 
 @media only screen and (max-width: 900px) {
